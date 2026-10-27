@@ -1,0 +1,23 @@
+{
+    "name": "MapLab.Samples.Elevation.Editor",
+    "rootNamespace": "MapLab.Samples.Elevation.Editor",
+    "references": [
+        "MapLab",
+        "MapLab.Editor",
+        "MapLab.Samples.Elevation",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.2D.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

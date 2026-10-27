@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: cb616a3dd39ab684f9fcbd055c086bd2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2671866731358993593
+    second: Chunk_0_-1_0
+  - first:
+      213: 3673670828417205999
+    second: Chunk_0_-1_1
+  - first:
+      213: 3022546488664470972
+    second: Chunk_0_-1_2
+  - first:
+      213: -4837592876594860430
+    second: Chunk_0_-1_3
+  - first:
+      213: 499679776024233380
+    second: Chunk_0_-1_4
+  - first:
+      213: -6782999410575807566
+    second: Chunk_0_-1_5
+  - first:
+      213: 8883906482038580429
+    second: Chunk_0_-1_6
+  - first:
+      213: -6033510187649547312
+    second: Chunk_0_-1_7
+  - first:
+      213: -1583409619640636816
+    second: Chunk_0_-1_8
+  - first:
+      213: -2423212740797170238
+    second: Chunk_0_-1_9
+  - first:
+      213: 4669982072549307196
+    second: Chunk_0_-1_10
+  - first:
+      213: -968683970832768549
+    second: Chunk_0_-1_11
+  - first:
+      213: -5047035919106354848
+    second: Chunk_0_-1_12
+  - first:
+      213: -1019339005255983010
+    second: Chunk_0_-1_13
+  - first:
+      213: 3697174030486764867
+    second: Chunk_0_-1_14
+  - first:
+      213: -7131176487155020495
+    second: Chunk_0_-1_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 6
+  spritePivot: {x: 0, y: 0}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chunk_0_-1_0
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1012
+        width: 47
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743c92e2d5f9bead0800000000000000
+      internalID: -2671866731358993593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_1
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 978
+        width: 63
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6c58d87208bf230800000000000000
+      internalID: 3673670828417205999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 977
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb533fd640e32f920800000000000000
+      internalID: 3022546488664470972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_3
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 960
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e6a9ec8ea6ddcb0800000000000000
+      internalID: -4837592876594860430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_4
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 863
+        width: 63
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a50f5fdb183fe600800000000000000
+      internalID: 499679776024233380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_5
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 901
+        width: 61
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bbe1f459f1fdd1a0800000000000000
+      internalID: -6782999410575807566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_6
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 891
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc423bf50e9f94b70800000000000000
+      internalID: 8883906482038580429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_7
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 857
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d3c274837aa44ca0800000000000000
+      internalID: -6033510187649547312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_8
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 907
+        width: 69
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07a22671759960ae0800000000000000
+      internalID: -1583409619640636816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_9
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 845
+        width: 47
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cd7599d9d40f5ed0800000000000000
+      internalID: -2423212740797170238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_10
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 825
+        width: 75
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c337ebdc3fb1fc040800000000000000
+      internalID: 4669982072549307196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_11
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 807
+        width: 67
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd1e5e29f0b8e82f0800000000000000
+      internalID: -968683970832768549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_12
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 750
+        width: 55
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0615709629355f9b0800000000000000
+      internalID: -5047035919106354848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_13
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 661
+        width: 116
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50640e43949ad1f0800000000000000
+      internalID: -1019339005255983010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_14
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 736
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d76f731300f4330800000000000000
+      internalID: 3697174030486764867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chunk_0_-1_15
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 627
+        width: 51
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13dc18c74c8f80d90800000000000000
+      internalID: -7131176487155020495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Chunk_0_-1_0: -2671866731358993593
+      Chunk_0_-1_1: 3673670828417205999
+      Chunk_0_-1_10: 4669982072549307196
+      Chunk_0_-1_11: -968683970832768549
+      Chunk_0_-1_12: -5047035919106354848
+      Chunk_0_-1_13: -1019339005255983010
+      Chunk_0_-1_14: 3697174030486764867
+      Chunk_0_-1_15: -7131176487155020495
+      Chunk_0_-1_2: 3022546488664470972
+      Chunk_0_-1_3: -4837592876594860430
+      Chunk_0_-1_4: 499679776024233380
+      Chunk_0_-1_5: -6782999410575807566
+      Chunk_0_-1_6: 8883906482038580429
+      Chunk_0_-1_7: -6033510187649547312
+      Chunk_0_-1_8: -1583409619640636816
+      Chunk_0_-1_9: -2423212740797170238
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

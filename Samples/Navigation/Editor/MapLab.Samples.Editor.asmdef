@@ -1,0 +1,19 @@
+{
+    "name": "MapLab.Samples.Editor",
+    "rootNamespace": "MapLab.Samples.Navigation.Editor",
+    "references": [
+        "MapLab.Samples",
+        "MapLab.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
