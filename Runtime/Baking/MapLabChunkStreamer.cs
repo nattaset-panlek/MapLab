@@ -33,7 +33,7 @@ namespace MapLab
             Refresh();
             if (!Application.isPlaying) return;
             RenderPipelineManager.beginCameraRendering += OnBeginCameraRendering;
-            Camera.onPreCull += OnPreCull;
+            Camera.onPreCull += HandleCameraPreCull;
             _listening = true;
         }
 
@@ -42,7 +42,7 @@ namespace MapLab
             if (_listening)
             {
                 RenderPipelineManager.beginCameraRendering -= OnBeginCameraRendering;
-                Camera.onPreCull -= OnPreCull;
+                Camera.onPreCull -= HandleCameraPreCull;
                 _listening = false;
             }
             ShowAll();
@@ -126,7 +126,7 @@ namespace MapLab
             Follow(camera);
         }
 
-        private void OnPreCull(Camera camera)
+        private void HandleCameraPreCull(Camera camera)
         {
             Follow(camera);
         }
