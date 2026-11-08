@@ -22,6 +22,7 @@ Copy or clone this repository into a folder under `Assets/`, for example `Assets
 | `Editor/` | The MapLab window, bakers, walkable area bake, presets and probes (`MapLab.Editor`) |
 | `Samples/Navigation/` | Example consumer that builds a NavMesh from the baked walkable file |
 | `Samples/Elevation/` | Example of walking up plateaus |
+| `Art/` | Default tree and grass tuft art used by the demo |
 | `Demo/` | Demo scene with its baked layers and walkable file |
 | `Tests/Editor/` | EditMode tests |
 

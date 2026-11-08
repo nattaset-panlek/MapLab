@@ -12,6 +12,7 @@ namespace MapLab.Editor
         public static readonly Rect GroundArea = new Rect(-26f, -18f, 52f, 36f);
         public static readonly Vector2 PlazaCenter = new Vector2(5.2f, -0.2f);
 
+        private const int GrassTuftCount = 240;
         private const float PathWidth = 1.5f;
         private const float PlateauHeight = 1.75f;
         private const float MiddleTierHeight = 1.25f;
@@ -85,6 +86,7 @@ namespace MapLab.Editor
             Transform ground = MapLabSceneBuilder.Child(parent, "Ground");
             BuildBase(ground, litMaterial);
             BuildMoss(ground, litMaterial);
+            BuildGrassTufts(ground, litMaterial);
 
             Transform roads = MapLabSceneBuilder.Set(parent, "Roads", 2);
             Transform plaza = MapLabSceneBuilder.Set(parent, "Plaza", 1);
@@ -194,6 +196,26 @@ namespace MapLab.Editor
                 renderer.sharedMaterial = litMaterial;
                 renderer.color = MossTints[rng.Next(MossTints.Length)];
                 renderer.sortingOrder = MapLabSceneBuilder.MossOrder;
+            }
+        }
+
+        private static void BuildGrassTufts(Transform parent, Material litMaterial)
+        {
+            Transform tufts = MapLabSceneBuilder.Child(parent, "Grass Tufts");
+            var rng = new Random(13);
+            for (int i = 0; i < GrassTuftCount; i++)
+            {
+                var go = new GameObject($"Tuft {i:000}");
+                go.transform.SetParent(tufts, false);
+                go.transform.position = new Vector3(
+                    GroundArea.xMin + (float)rng.NextDouble() * GroundArea.width,
+                    GroundArea.yMin + (float)rng.NextDouble() * GroundArea.height, 0f);
+                float scale = 0.8f + (float)rng.NextDouble() * 0.6f;
+                go.transform.localScale = new Vector3(rng.Next(2) == 0 ? scale : -scale, scale, 1f);
+                var renderer = go.AddComponent<SpriteRenderer>();
+                renderer.sprite = Art(MapLabArtPainter.GrassTufts[rng.Next(MapLabArtPainter.GrassTufts.Length)]);
+                renderer.sharedMaterial = litMaterial;
+                renderer.sortingOrder = MapLabSceneBuilder.MossOrder + 1;
             }
         }
 

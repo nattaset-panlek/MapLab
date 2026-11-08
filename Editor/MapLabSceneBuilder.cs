@@ -28,13 +28,14 @@ namespace MapLab.Editor
         public const int ContactShadowOrder = 2;
         public const int ObjectOrder = 6;
         public const int DustOrder = 95;
-        public const int CanopyOrder = 100;
 
         private const string EditorAssemblyName = "MapLab.Editor";
         private const string SpriteLitMaterialGuid = "a97c105638bdf8b4a8650670310a4cd3";
         private const string SpriteUnlitShaderName = "Universal Render Pipeline/2D/Sprite-Unlit-Default";
         private const string ViewerLayerName = "Player";
         private const int DemoObstacleLayer = 0;
+        private const float TreeArtScale = 0.6f;
+        private const float TreeTrunkOffsetX = 0.13f;
         private const float DemoCameraSize = 6f;
         private const float WalkableCellSize = 0.5f;
         private const float ShadowAlpha = 0.2f;
@@ -60,6 +61,7 @@ namespace MapLab.Editor
         public static string RootFolder => _rootFolder ??= FindRootFolder();
         public static string DemoFolder => RootFolder + "/Demo";
         public static string GeneratedFolder => DemoFolder + "/Generated";
+        public static string ArtFolder => RootFolder + "/Art";
         public static string ScenePath => DemoFolder + "/MapLab_Demo.unity";
         private static string VolumeProfilePath => DemoFolder + "/MapLab_Volume.asset";
         private static string FogMaterialPath => GeneratedFolder + "/MapLab_Fog.mat";
@@ -224,14 +226,14 @@ namespace MapLab.Editor
                 circle.offset = new Vector2(0f, 0.24f);
             }
 
-            foreach (var position in TreePositions)
+            for (int i = 0; i < TreePositions.Length; i++)
             {
-                GameObject tree = CreateProp(props, "Tree", position, Art(MapLabArtPainter.TreeTrunk), shadow, new Vector2(1.2f, 0.45f), litMaterial, obstacleLayer);
+                string art = MapLabArtPainter.Trees[i % MapLabArtPainter.Trees.Length];
+                GameObject tree = CreateProp(props, "Tree", TreePositions[i], Art(art), shadow, new Vector2(3.6f, 1.1f), litMaterial, obstacleLayer);
                 var circle = tree.AddComponent<CircleCollider2D>();
                 circle.radius = 0.22f;
                 circle.offset = new Vector2(0f, 0.08f);
-                AddSprite(tree.transform, "Canopy Shadow", shadow, litMaterial, ShadowOrder, new Color(0f, 0f, 0f, 0.24f), new Vector3(0.35f, 0.15f, 0f), new Vector3(3.3f, 1.5f, 1f));
-                AddCanopy(tree.transform, litMaterial);
+                AddTreeFade(tree.transform.Find("Sprite").GetComponent<SpriteRenderer>());
             }
         }
 
@@ -248,21 +250,24 @@ namespace MapLab.Editor
             return root;
         }
 
-        private static void AddCanopy(Transform tree, Material litMaterial)
+        private static void AddTreeFade(SpriteRenderer body)
         {
-            SpriteRenderer canopy = AddSprite(tree, "Canopy", Art(MapLabArtPainter.TreeCanopy), litMaterial, CanopyOrder, Color.white, new Vector3(0f, 2.05f, 0f), Vector3.one);
-            canopy.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            body.transform.localScale = Vector3.one * TreeArtScale;
+            body.transform.localPosition = Vector3.left * TreeTrunkOffsetX;
+            var holder = new GameObject("Canopy") { layer = LayerMask.NameToLayer("Ignore Raycast") };
+            holder.transform.SetParent(body.transform.parent, false);
 
-            var trigger = canopy.gameObject.AddComponent<BoxCollider2D>();
+            Vector2 size = body.sprite.bounds.size * TreeArtScale;
+            var trigger = holder.AddComponent<BoxCollider2D>();
             trigger.isTrigger = true;
-            trigger.size = new Vector2(2.6f, 3.05f);
-            trigger.offset = new Vector2(0f, -0.575f);
+            trigger.size = new Vector2(size.x * 0.8f, size.y * 0.7f);
+            trigger.offset = new Vector2(-TreeTrunkOffsetX, size.y * 0.55f);
 
-            var fade = canopy.gameObject.AddComponent<OccluderFadeController>();
+            var fade = holder.AddComponent<OccluderFadeController>();
             var serialized = new SerializedObject(fade);
             SerializedProperty renderers = serialized.FindProperty("_renderers");
             renderers.arraySize = 1;
-            renderers.GetArrayElementAtIndex(0).objectReferenceValue = canopy;
+            renderers.GetArrayElementAtIndex(0).objectReferenceValue = body;
             int viewerLayer = LayerMask.NameToLayer(ViewerLayerName);
             serialized.FindProperty("_viewerLayers").intValue = viewerLayer >= 0 ? 1 << viewerLayer : ~0;
             serialized.FindProperty("_fadedAlpha").floatValue = 0.35f;

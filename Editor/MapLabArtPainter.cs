@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,8 +18,15 @@ namespace MapLab.Editor
         public const string PathEdge = "MapLab_PathEdge";
         public const string Moss = "MapLab_MossPatch";
         public const string Boulder = "MapLab_Boulder";
-        public const string TreeTrunk = "MapLab_TreeTrunk";
-        public const string TreeCanopy = "MapLab_TreeCanopy";
+        public const string GrassTuft1 = "MapLab_GrassTuft_1";
+        public const string GrassTuft2 = "MapLab_GrassTuft_2";
+        public const string GrassTuft3 = "MapLab_GrassTuft_3";
+        public const string TreeGreen1 = "MapLab_Tree_Green_1";
+        public const string TreeGreen2 = "MapLab_Tree_Green_2";
+        public const string TreeYellow1 = "MapLab_Tree_Yellow_1";
+        public const string TreeYellow2 = "MapLab_Tree_Yellow_2";
+        public static readonly string[] Trees = { TreeGreen1, TreeYellow1, TreeGreen2, TreeYellow2 };
+        public static readonly string[] GrassTufts = { GrassTuft1, GrassTuft2, GrassTuft3 };
         public const string SoftShadow = "MapLab_SoftShadow";
         public const string FogPuff = "MapLab_FogPuff";
         public const string Dust = "MapLab_Dust";
@@ -39,13 +47,6 @@ namespace MapLab.Editor
         private static readonly Color StoneMid = new Color(0.78f, 0.76f, 0.85f);
         private static readonly Color StoneDark = new Color(0.64f, 0.62f, 0.73f);
         private static readonly Color StoneOutline = new Color(0.45f, 0.43f, 0.54f);
-        private static readonly Color TrunkMid = new Color(0.66f, 0.47f, 0.32f);
-        private static readonly Color TrunkDark = new Color(0.52f, 0.36f, 0.24f);
-        private static readonly Color TrunkOutline = new Color(0.36f, 0.24f, 0.16f);
-        private static readonly Color CanopyMid = new Color(0.4f, 0.71f, 0.39f);
-        private static readonly Color CanopyLight = new Color(0.53f, 0.81f, 0.46f);
-        private static readonly Color CanopyDark = new Color(0.31f, 0.58f, 0.33f);
-        private static readonly Color CanopyOutline = new Color(0.21f, 0.43f, 0.25f);
         private static readonly Vector2 LightFrom = new Vector2(-0.6f, 0.8f);
 
         private static readonly Dictionary<string, ArtSpec> Specs = new Dictionary<string, ArtSpec>
@@ -56,8 +57,6 @@ namespace MapLab.Editor
             { PathEdge, new ArtSpec(256, 192, new Vector2(0.5f, 0.5f), true, PaintPathEdge) },
             { Moss, new ArtSpec(256, 256, new Vector2(0.5f, 0.5f), false, PaintMoss) },
             { Boulder, new ArtSpec(160, 112, new Vector2(0.5f, 10f / 112f), false, PaintBoulder) },
-            { TreeTrunk, new ArtSpec(72, 200, new Vector2(0.5f, 6f / 200f), false, PaintTrunk) },
-            { TreeCanopy, new ArtSpec(384, 320, new Vector2(0.5f, 0.5f), false, PaintCanopy) },
             { SoftShadow, new ArtSpec(128, 128, new Vector2(0.5f, 0.5f), false, PaintShadow) },
             { FogPuff, new ArtSpec(256, 256, new Vector2(0.5f, 0.5f), false, () => Radial(256, 1.8f)) },
             { Dust, new ArtSpec(32, 32, new Vector2(0.5f, 0.5f), false, () => Radial(32, 2.2f)) },
@@ -88,6 +87,8 @@ namespace MapLab.Editor
         #region [Public Methods]
         public static Sprite Get(string folder, string name)
         {
+            if (Trees.Contains(name) || GrassTufts.Contains(name)) return GetStock(name);
+
             if (!Specs.TryGetValue(name, out var spec)) throw new ArgumentException($"Unknown MapLab art '{name}'.");
 
             string path = $"{folder}/{name}.png";
@@ -105,6 +106,28 @@ namespace MapLab.Editor
         #endregion
 
         #region [Private Methods]
+        private static Sprite GetStock(string name)
+        {
+            string path = $"{MapLabSceneBuilder.ArtFolder}/{name}.png";
+            var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null) throw new InvalidOperationException($"MapLab art '{path}' is missing.");
+
+            if (importer.textureType != TextureImporterType.Sprite || !Mathf.Approximately(importer.spritePixelsPerUnit, PixelsPerUnit) || importer.spritePivot != new Vector2(0.5f, 0f))
+            {
+                importer.textureType = TextureImporterType.Sprite;
+                importer.spriteImportMode = SpriteImportMode.Single;
+                importer.spritePixelsPerUnit = PixelsPerUnit;
+                importer.alphaIsTransparency = true;
+                var settings = new TextureImporterSettings();
+                importer.ReadTextureSettings(settings);
+                settings.spriteAlignment = (int)SpriteAlignment.Custom;
+                settings.spritePivot = new Vector2(0.5f, 0f);
+                importer.SetTextureSettings(settings);
+                importer.SaveAndReimport();
+            }
+            return AssetDatabase.LoadAssetAtPath<Sprite>(path);
+        }
+
         private static void WritePng(string path, ArtSpec spec)
         {
             var texture = new Texture2D(spec.Width, spec.Height, TextureFormat.RGBA32, false);
@@ -284,76 +307,6 @@ namespace MapLab.Editor
                     float facing = Vector2.Dot(new Vector2(dx, dy).normalized, light);
                     Color color = dy > 0.15f && distance < 0.62f ? StoneLight : facing > 0.35f ? StoneLight : facing < -0.3f ? StoneDark : StoneMid;
                     if (edge < 2.5f) color = StoneOutline;
-                    color.a = Mathf.Clamp01(edge + 0.5f);
-                    buffer[y * width + x] = color;
-                }
-            }
-            return buffer;
-        }
-
-        private static Color[] PaintTrunk()
-        {
-            const int width = 72, height = 200;
-            const float center = 35.5f;
-            var buffer = new Color[width * height];
-            for (int y = 0; y < height; y++)
-            {
-                float halfWidth = 13f + (y < 30 ? (30 - y) * 0.5f : 0f);
-                for (int x = 0; x < width; x++)
-                {
-                    float inset = halfWidth - Mathf.Abs(x + 0.5f - center);
-                    if (inset <= -0.5f || y < 3 || y > 196)
-                    {
-                        buffer[y * width + x] = Color.clear;
-                        continue;
-                    }
-                    float nx = (x + 0.5f - center) / halfWidth;
-                    Color color = nx > 0.3f ? TrunkDark : TrunkMid;
-                    if (inset < 2.5f || y < 5) color = TrunkOutline;
-                    color.a = Mathf.Clamp01(inset + 0.5f);
-                    buffer[y * width + x] = color;
-                }
-            }
-            return buffer;
-        }
-
-        private static Color[] PaintCanopy()
-        {
-            const int width = 384, height = 320;
-            var blobs = new[]
-            {
-                new Vector3(192, 190, 110), new Vector3(110, 175, 85), new Vector3(275, 175, 88),
-                new Vector3(150, 250, 80), new Vector3(240, 255, 82), new Vector3(90, 120, 70),
-                new Vector3(295, 118, 72), new Vector3(192, 120, 95), new Vector3(195, 280, 60),
-                new Vector3(60, 180, 55), new Vector3(330, 190, 52)
-            };
-            var buffer = new Color[width * height];
-            for (int y = 0; y < height; y++)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    float edge = float.MinValue;
-                    bool highlight = false;
-                    bool shadow = false;
-                    foreach (var blob in blobs)
-                    {
-                        float dx = x + 0.5f - blob.x, dy = y + 0.5f - blob.y;
-                        float inside = blob.z - Mathf.Sqrt(dx * dx + dy * dy);
-                        if (inside > edge) edge = inside;
-                        if (inside <= 0f) continue;
-                        float hx = dx + blob.z * 0.25f, hy = dy - blob.z * 0.25f;
-                        if (Mathf.Sqrt(hx * hx + hy * hy) < blob.z * 0.55f) highlight = true;
-                        if (dy < -blob.z * 0.55f) shadow = true;
-                    }
-
-                    if (edge <= -0.5f)
-                    {
-                        buffer[y * width + x] = Color.clear;
-                        continue;
-                    }
-
-                    Color color = highlight ? CanopyLight : shadow || y < height * 0.3f ? CanopyDark : CanopyMid;
-                    if (edge < 3f) color = CanopyOutline;
                     color.a = Mathf.Clamp01(edge + 0.5f);
                     buffer[y * width + x] = color;
                 }
