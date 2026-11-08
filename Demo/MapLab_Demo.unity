@@ -1178,7 +1178,7 @@ MonoBehaviour:
   - {x: -16.9974, y: 9.22208}
   - {x: -17.1734, y: 7.95488}
   _sharp: 000000000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 0
@@ -8462,8 +8462,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.5
@@ -9920,8 +9920,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.8
@@ -11403,7 +11403,7 @@ MonoBehaviour:
   - {x: -19.443, y: 8.9456005}
   - {x: -19.763, y: 6.6416}
   _sharp: 000000000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 0
@@ -12154,8 +12154,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.5
@@ -13469,7 +13469,7 @@ MonoBehaviour:
   - {x: 16.15598, y: 6.9048367}
   - {x: 19.6267, y: 8.371018}
   _sharp: 000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 1
@@ -21686,7 +21686,7 @@ MonoBehaviour:
   - {x: -22.5, y: 8.6}
   - {x: -23, y: 5}
   _sharp: 000000000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 0
@@ -21944,10 +21944,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MapLab::MapLab.Shapes.ExtrudedShape
   _points:
-  - {x: 8.999143, y: -0.2}
-  - {x: 8.246335, y: 1.6160344}
-  - {x: 6.359459, y: 2.7279577}
-  - {x: 3.9706573, y: 2.9044313}
+  - {x: 9.890775, y: -1.0916325}
+  - {x: 10.6939535, y: 1.6859666}
+  - {x: 7.72313, y: 3.3398628}
+  - {x: 3.6734457, y: 3.743616}
   - {x: 2.0632784, y: 1.6699166}
   - {x: 1.0326943, y: -0.2000003}
   - {x: 2.2233856, y: -1.9744717}
@@ -21955,7 +21955,7 @@ MonoBehaviour:
   - {x: 6.4237037, y: -3.2901921}
   - {x: 8.16205, y: -1.965788}
   _sharp: 00000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 0
@@ -39091,7 +39091,7 @@ MonoBehaviour:
   - {x: -12.500905, y: -14.016674}
   - {x: -9.764523, y: -13.01205}
   _sharp: 00000000000000000000
-  _smoothness: 10
+  _smoothness: 1
   _visualBaked: 0
   _preset: {fileID: 0}
   _type: 2
@@ -40160,8 +40160,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.8
