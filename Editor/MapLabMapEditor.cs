@@ -10,9 +10,25 @@ namespace MapLab.Editor
     {
         #region [Variables/Fields]
         private const float PreviewHeight = 160f;
+        private int _bakedCount;
+        private int _layerCount;
+        private bool _countStale = true;
         #endregion
 
         #region [Unity Methods]
+        private void OnEnable()
+        {
+            _countStale = true;
+            EditorApplication.hierarchyChanged += MarkCountStale;
+            Undo.undoRedoPerformed += MarkCountStale;
+        }
+
+        private void OnDisable()
+        {
+            EditorApplication.hierarchyChanged -= MarkCountStale;
+            Undo.undoRedoPerformed -= MarkCountStale;
+        }
+
         public override void OnInspectorGUI()
         {
             var map = (MapLabMap)target;
@@ -47,11 +63,26 @@ namespace MapLab.Editor
         #endregion
 
         #region [Private Methods]
-        private static void DrawStaticBake(MapLabMap map)
+        private void MarkCountStale()
+        {
+            _countStale = true;
+        }
+
+        private void RefreshBakedCount(MapLabMap map)
+        {
+            if (!_countStale && _layerCount == MapLabLayerStack.Layers(map).Count) return;
+            var layers = MapLabLayerStack.Layers(map);
+            _layerCount = layers.Count;
+            _bakedCount = layers.Count(layer => MapLabLayerBaker.BakedLayer(map, layer.Name) != null);
+            _countStale = false;
+        }
+
+        private void DrawStaticBake(MapLabMap map)
         {
             EditorGUILayout.Space();
-            int layers = MapLabLayerStack.Layers(map).Count;
-            int baked = MapLabLayerStack.Layers(map).Count(layer => MapLabLayerBaker.BakedLayer(map, layer.Name) != null);
+            RefreshBakedCount(map);
+            int layers = _layerCount;
+            int baked = _bakedCount;
             EditorGUILayout.LabelField($"Bake layers: {baked} of {layers} baked (everything below order {map.ActorSortingOrder} can be baked)", EditorStyles.miniLabel);
             using (new EditorGUILayout.HorizontalScope())
             {
@@ -61,6 +92,7 @@ namespace MapLab.Editor
                     try
                     {
                         Debug.Log(MapLabStaticBaker.Bake(map));
+                        _countStale = true;
                     }
                     catch (InvalidOperationException e)
                     {
@@ -73,6 +105,7 @@ namespace MapLab.Editor
                     if (GUILayout.Button("Unbake", GUILayout.Height(28f), GUILayout.Width(90f)))
                     {
                         Debug.Log(MapLabStaticBaker.Unbake(map));
+                        _countStale = true;
                         GUIUtility.ExitGUI();
                     }
                 }
